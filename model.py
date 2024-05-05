@@ -18,7 +18,7 @@ def model(input):
 
 
     # Gerando conjunto de treino e teste (30% para teste):
-    x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.3) #0.3 data as data test
+    x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.2) #0.3 data as data test
 
     # Precisamos converter nosso conjunto de dados para float 32bits, que é o que a MLP recebe:
     x_train = np.array(x_train).astype(np.float32)
@@ -41,10 +41,7 @@ def model(input):
     #use our model to predict
     y_pred=Model.predict(x_test)
 
-    from sklearn.metrics import mean_squared_error 
-    from sklearn.metrics import classification_report
-    from sklearn.metrics import confusion_matrix
-    from sklearn.metrics import accuracy_score
+  
 
     # Imprime relatório de performance:
     #print(classification_report(y_test,y_pred))
@@ -56,10 +53,6 @@ def model(input):
     # Se quisermos mostrar nosso histórico de loss do modelo, 
     # podemos representar graficamente a propriedade loss_curve_ de nosso modelo treinado:
 
-
-    plt.plot(h.loss_curve_)
-    plt.title('Loss History')
-    plt.xlabel('epoch')
 
     # Lembrando de como codificamos nossas saídas:
 
