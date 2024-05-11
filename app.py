@@ -4,6 +4,13 @@ import model
 
 app = Flask(__name__)
 
+
+@app.route("/train")
+def train():
+    global values 
+    values = model.train_model()
+    return 'oks'
+
 @app.route('/predict', methods=['Post'])
 def predict():
     
@@ -16,7 +23,7 @@ def predict():
 
     #matrix = [[5.4,3.7,1.5,0.2]]
     matrix = [sepal_height, sepal_width, petal_height, petal_width]
-    return jsonify ({ "message" : model.model(np.array([matrix]))})
+    return jsonify ({ "message" : model.predict_model(np.array([matrix]), values)})
     
 
 
